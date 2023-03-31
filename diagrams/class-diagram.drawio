@@ -1,0 +1,255 @@
+<mxfile host="65bd71144e" pages="2">
+    <diagram name="UML" id="6133507b-19e7-1e82-6fc7-422aa6c4b21f">
+        <mxGraphModel dx="886" dy="1502" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-10" value="Main (Game)" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="40" y="-839" width="400" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-13" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                    <mxGeometry y="26" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-14" value="+ main( ): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                    <mxGeometry y="34" width="400" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-15" value="+ get_data_from_user(str name_file): List list_pokemons" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                    <mxGeometry y="60" width="400" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-2" value="+ get_pokemon_in_a_list_of_pokemons(int coach_to_ask,&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;List list_of_pokemons): List List_pokemons_alive" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                    <mxGeometry y="86" width="400" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-3" value="+ coach_is_undefeated(List list_of_pokemons): Boolean" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                    <mxGeometry y="120" width="400" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.007;entryY=0.459;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="NAiFexQSWN1Ocbff_MQO-35" target="OvTA0m-3lmx1_Y0kkq5D-2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="-260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-35" value="PokemonWater" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="680" y="-620" width="400" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-38" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-35" vertex="1">
+                    <mxGeometry y="26" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.011;entryY=0.51;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="NAiFexQSWN1Ocbff_MQO-40" target="OvTA0m-3lmx1_Y0kkq5D-2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="-250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-40" value="PokemonAir" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="680" y="-410" width="400" height="176" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-43" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-40" vertex="1">
+                    <mxGeometry y="26" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.008;entryY=0.547;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="NAiFexQSWN1Ocbff_MQO-45" target="OvTA0m-3lmx1_Y0kkq5D-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-45" value="PokemonElectricity" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="680" y="-200" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-48" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-45" vertex="1">
+                    <mxGeometry y="26" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-18" value="Pokemon" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="40" y="-519.64" width="400" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-4" value="+ pokemon_id : Int&lt;br&gt;+ pokemon_name: Str&lt;br&gt;+ weapon_type: Enum in WeaponType&lt;br&gt;+ health_points: int&lt;br&gt;+ attack_rating: int&lt;br&gt;+ defense_rating: int" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-18" vertex="1">
+                    <mxGeometry y="26" width="400" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-21" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-18" vertex="1">
+                    <mxGeometry y="130" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="OvTA0m-3lmx1_Y0kkq5D-2" value="+ __init__(self, pokemon_id: int, pokemon_name: str, weapon_type: Enum, health_points: int, attack_rating: int, defense_rating: int) : void&lt;br&gt;&lt;br&gt;+ __del__(self) : void&lt;br&gt;&lt;br&gt;+ __str__(self) : str&lt;br&gt;&lt;br&gt;+ get_methods...&lt;br&gt;+ set_methods...&lt;br&gt;&lt;br&gt;+ is_alive(self) : bool&lt;br&gt;&lt;br&gt;+ fight_attack(self, Pokemon pokemon_to_attack) : bool&lt;br&gt;&lt;br&gt;+ fight_defense(self, int points_of_damage) : bool" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-18" vertex="1">
+                    <mxGeometry y="138" width="400" height="242" as="geometry"/>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=none;startArrow=open;startFill=0;startSize=8;endArrow=none;endFill=0;endSize=16;fontFamily=Verdana;fontSize=12;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="NAiFexQSWN1Ocbff_MQO-10" target="NAiFexQSWN1Ocbff_MQO-18" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="180" y="-598" as="sourcePoint"/>
+                        <mxPoint x="99.99999999999974" y="-560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-58" value="0..n" style="text;html=1;resizable=0;points=[];align=center;verticalAlign=middle;labelBackgroundColor=none;fontSize=12;fontFamily=Verdana" parent="NAiFexQSWN1Ocbff_MQO-57" vertex="1" connectable="0">
+                    <mxGeometry x="0.8576" y="2" relative="1" as="geometry">
+                        <mxPoint x="14.010000000000002" y="-4.6899999999999995" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-1" value="1&lt;br&gt;" style="text;html=1;resizable=0;points=[];align=center;verticalAlign=middle;labelBackgroundColor=none;fontSize=12;fontFamily=Verdana" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="266.01" y="-526.69" as="geometry">
+                        <mxPoint x="-93" y="-74" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.003;entryY=0.404;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7_PFd3bsl0oHoIgsr5rR-6" target="OvTA0m-3lmx1_Y0kkq5D-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-6" value="PokemonEarth" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="680" y="-839" width="400" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="7_PFd3bsl0oHoIgsr5rR-7" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="7_PFd3bsl0oHoIgsr5rR-6" vertex="1">
+                    <mxGeometry y="26" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="WeaponType" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="-110" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="PUNCH&#10;KICK&#10;ELBOW&#10;BUTTHEAD" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="6" vertex="1">
+                    <mxGeometry y="26" width="140" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7" target="OvTA0m-3lmx1_Y0kkq5D-2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="160" y="-35" as="sourcePoint"/>
+                        <mxPoint x="210" y="-85" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="240" y="-70"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="fq1as8S1SG-cgDfV3Fgx" name="Flowchart">
+        <mxGraphModel dx="931" dy="994" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="bN-581mGkX1saQnBdqKh-0"/>
+                <mxCell id="bN-581mGkX1saQnBdqKh-1" parent="bN-581mGkX1saQnBdqKh-0"/>
+                <mxCell id="bN-581mGkX1saQnBdqKh-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=block;startFill=1;endArrow=none;endFill=0;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-4" target="bN-581mGkX1saQnBdqKh-7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=block;endFill=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-4" target="bN-581mGkX1saQnBdqKh-6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-4" value="Get configuration for Game User 1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="100" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=block;endFill=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="145" y="242" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-6" value="Get configuration for Game User 2" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="175" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-7" value="Init" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="30" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-11" target="Y11VyXxBffoLsdAoIsDr-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-11" value="&lt;span&gt;The Game starts&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="240" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=block;endFill=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-14" target="bN-581mGkX1saQnBdqKh-16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-14" target="Y11VyXxBffoLsdAoIsDr-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-14" value="&lt;span&gt;Coach 1 is undefeated&lt;br&gt;and Coach 2 is undefeated&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="40" y="480" width="210" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=block;endFill=1;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-16" target="bN-581mGkX1saQnBdqKh-18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-16" value="&lt;span&gt;The Game ends&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="665" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-17" value="NO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="109" y="630" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="bN-581mGkX1saQnBdqKh-1" source="bN-581mGkX1saQnBdqKh-18" target="bN-581mGkX1saQnBdqKh-22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-18" value="&lt;span&gt;Shows the Winner&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="740" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-21" value="YES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="260" y="520" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bN-581mGkX1saQnBdqKh-22" value="&lt;span&gt;Shows the Statistics of each Team&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="820" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-4" target="Y11VyXxBffoLsdAoIsDr-6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-4" value="&lt;span&gt;Make a copy of list of Pokemon alives for both coaches&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="300" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-6" target="bN-581mGkX1saQnBdqKh-14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-6" value="Select first Pokemon for both coaches" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;shadow=0;strokeWidth=1;glass=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="85" y="370" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-15" target="Y11VyXxBffoLsdAoIsDr-18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-15" target="Y11VyXxBffoLsdAoIsDr-22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-15" value="Pokemon of coach 1 is alive?" style="rhombus;whiteSpace=wrap;html=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="320" y="480" width="145" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-18" target="bN-581mGkX1saQnBdqKh-14" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="770" y="450" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="770" y="550"/>
+                            <mxPoint x="770" y="460"/>
+                            <mxPoint x="145" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-18" value="Pokemon of coach 2 is alive?" style="rhombus;whiteSpace=wrap;html=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="560" y="480" width="140" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-20" value="YES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="470" y="530" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-22" target="Y11VyXxBffoLsdAoIsDr-27" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-22" value="remove Pokemon from the list of Pokemons alive of coach 1" style="whiteSpace=wrap;html=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="332.5" y="650" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-27" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="520" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-27" value="Select next Pokemon for coach 1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;shadow=0;strokeWidth=1;glass=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="332.5" y="770" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-29" value="NO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="360" y="620" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" target="Y11VyXxBffoLsdAoIsDr-33" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="630" y="620" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-33" target="Y11VyXxBffoLsdAoIsDr-34" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-33" value="remove Pokemon from the list of Pokemons alive of coach 2" style="whiteSpace=wrap;html=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="570" y="650" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="bN-581mGkX1saQnBdqKh-1" source="Y11VyXxBffoLsdAoIsDr-34" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="770" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-34" value="Select next Pokemon for coach 2" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;shadow=0;strokeWidth=1;glass=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="570" y="770" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-35" value="NO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="597.5" y="620" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="Y11VyXxBffoLsdAoIsDr-38" value="YES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="bN-581mGkX1saQnBdqKh-1" vertex="1">
+                    <mxGeometry x="700" y="520" width="40" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
