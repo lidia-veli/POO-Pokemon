@@ -76,12 +76,12 @@ class PokemonElectricity(Pokemon):
         '''Método que implementa el ataque del Pokemon usando un golpe sobre otro Pokemon enemigo.
             Se carcateriza por que hay un 50% de probabilidad de que nuestro ataque valga el doble de puntos'''
         
-        if randint(0,1) == 1:  # si nuestro ataque va a valer el doble de puntos
-            self.set_attack_rating( self.get_attack_rating()*2 )  # modificamos los puntos de ataque de nuestro pokemon con el setter de ataque
-            super().fight_attack(enemy)  # y usamos la funcion de ataque de la clase padre (con los nuevos puntos de ataque)
+        if randint(0,1) == 1:  # nuestro ataque va a valer el doble de puntos
+            self.set_attack_rating( self.get_attack_rating()*2 )  # modificamos los puntos de ataque de nuestro pokemon con el setter de ataque           
+            return super().fight_attack(enemy)  # y usamos la funcion de ataque de la clase padre (con los nuevos puntos de ataque)
         
-        else:  # si nuestro ataque no va a valer el doble
-            super().fight_attack(enemy)  # es la misma funcion que la de la clase padre
+        else:  # nuestro ataque no va a valer el doble
+            return super().fight_attack(enemy)  # es la misma funcion que la de la clase padre
         
 
 
