@@ -33,9 +33,11 @@ this Python class.
 
 # Source packages.
 
+from random import randint
+from pokemon import Pokemon
+from weapon_type import WeaponType
 
-
-class PokemonAir():
+class PokemonAir(Pokemon):
     """Python class to implement a basic version of a Pokemon of the game.
 
     This Python class implements the basic version of a Pokemon of the game.
@@ -68,6 +70,16 @@ class PokemonAir():
       >>> from weapon_type import WeaponType
       >>> obj_Pokemon = PokemonEarth(1, "Pidgey", WeaponType.PUNCH, 100, 7, 10)
     """
+
+    def fight_defense(self, damage_points):
+        '''Método que implementa la defensa del <pokemon tipo Tierra.
+            Se carcateriza porque hay un 50% de probabilida de que el ataque no le afecte'''
+        if randint(0,1) == 1:  # el ataque le afecta
+            daño = damage_points - self.get_defense_rating()  
+            self.set_health_points( self.get_health_points() - daño )
+            return True
+        else:  # el ataque no le afecta
+            return False
 
 
 def main():
