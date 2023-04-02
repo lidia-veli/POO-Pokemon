@@ -120,7 +120,7 @@ class Pokemon():
         return self.__attack_rating
     def get_defense_rating(self):
         return self.__defense_rating
-    # el único atributo modificable es el estado de salud del pokemon
+    
     def set_health_points(self, new_health_points):
         # los puntos de salud no pueden superar los 100 puntos
         # sí permitimos que sean negativos, ya que eso indica que el pokemon está muerto
@@ -129,19 +129,24 @@ class Pokemon():
         else:
             raise ValueError("The parameter new_health_points must be a valid integer.")
     
+    def set_attack_rating(self, new_attack_rating):
+        self.__attack_rating = new_attack_rating
+    def set_defense_rating(self, new_defense_rating):
+        self.__defense_rating = new_defense_rating
+    
 
     def is_alive(self): # devuelve True si el pokemon sique vivo, esto es, tiene puntos de salud > 0
         '''Método para saber si el Pokemon está vivo o no'''
-        if self.__health_points > 0:  # está vivo, si todavia tiene health_points
+        if self.get_health_points() > 0:  # está vivo, si todavia tiene health_points
             return True
         else:
             return False
 
     def fight_defense(self, damage_points):
         '''Método que implementa la defensa del Pokémon a un golpe de otro Pokémon'''
-        if self.__defense_rating < damage_points:  # si la defensa es menor que los puntos de daño, la salud se ve afectada
-            daño = damage_points - self.get_defense_rating()  # calculamos el daño que recibirá el pokemon en base a sus puntos de defensa
-            self.set_health_points( self.get_health_points() - daño )  # actualizamos la salud del pokemon con el daño recibido
+        if damage_points >= self.get_defense_rating():  # si los puntos de daño superan a nuestros puntos de defensa, nuestra salud se ve afectada
+            damage = damage_points - self.get_defense_rating()  # calculamos el daño que recibiremos en base a sus puntos de defensa
+            self.set_health_points( self.get_health_points() - damage )  # actualizamos la salud del pokemon con el daño recibido
             return True  # nos han hecho daño
         else:
             return False  # no nos han hecho daño
@@ -149,15 +154,14 @@ class Pokemon():
     def fight_attack(self, enemy):
         '''Método que implementa el ataque del Pokémon usando un golpe sobre otro Pokémon.
             Basado en el fight_defense del pokemon enemigo'''
-        # nos aseguramos de que el enemigo es un objeto de la clase Pokemon
-        if not isinstance(enemy, Pokemon):
+        if not isinstance(enemy, Pokemon):  # nos aseguramos de que el enemigo es un objeto de la clase Pokemon
             raise TypeError("The parameter enemy must be a Pokemon.")
         else:
-            if self.__attack_rating > enemy.get_defense_rating(): # si nuestro ataque es mayor que su defensa, hacemos daño al enemigo
-                enemy.fight_defense(self.__attack_rating) # el enemigo se defiende de nuestro ataque
-                return True # hemos provocado daño al enemigo
+            if self.get_attack_rating() >= enemy.get_defense_rating(): # si nuestro ataque es mayor que su defensa, hacemos daño al enemigo
+                enemy.fight_defense( self.get_attack_rating() ) # el enemigo se defiende de nuestro ataque
+                return True # hemos podido atacar
             else:
-                return False # no hemos provocado daño
+                return False # no hemos podido atacar
 
 
 

@@ -73,10 +73,10 @@ class PokemonAir(Pokemon):
 
     def fight_defense(self, damage_points):
         '''Método que implementa la defensa del <pokemon tipo Tierra.
-            Se carcateriza porque hay un 50% de probabilida de que el ataque no le afecte'''
+            Se carcateriza por que hay un 50% de probabilidad de que el ataque no le afecte'''
         if randint(0,1) == 1:  # el ataque le afecta
-            daño = damage_points - self.get_defense_rating()  
-            self.set_health_points( self.get_health_points() - daño )
+            damage = damage_points - self.get_defense_rating()  
+            self.set_health_points( self.get_health_points() - damage )
             return True
         else:  # el ataque no le afecta
             return False

@@ -33,9 +33,12 @@ this Python class.
 
 # Source packages.
 
+from random import randint
+from pokemon import Pokemon
+from weapon_type import WeaponType
 
 
-class PokemonElectricity():
+class PokemonElectricity(Pokemon):
     """Python class to implement a basic version of a Pokemon of the game.
 
     This Python class implements the basic version of a Pokemon of the game.
@@ -69,6 +72,17 @@ class PokemonElectricity():
       >>> obj_Pokemon = PokemonEarth(1, "Pikachu", WeaponType.PUNCH, 100, 7, 10)
     """
 
+    def fight_attack(self, enemy):
+        '''Método que implementa el ataque del Pokemon usando un golpe sobre otro Pokemon enemigo.
+            Se carcateriza por que hay un 50% de probabilidad de que nuestro ataque valga el doble de puntos'''
+        
+        if randint(0,1) == 1:  # si nuestro ataque va a valer el doble de puntos
+            self.set_attack_rating( self.get_attack_rating()*2 )  # modificamos los puntos de ataque de nuestro pokemon con el setter de ataque
+            super().fight_attack(enemy)  # y usamos la funcion de ataque de la clase padre (con los nuevos puntos de ataque)
+        
+        else:  # si nuestro ataque no va a valer el doble
+            super().fight_attack(enemy)  # es la misma funcion que la de la clase padre
+        
 
 
 def main():
@@ -185,12 +199,12 @@ def main():
 
     pokemon_was_hit = pokemon_5.fight_attack(pokemon_6)
 
-    if pokemon_was_hit:
+    if pokemon_was_hit:  # TRUE
         if (pokemon_6.get_health_points() == 95) or (pokemon_6.get_health_points() == 85):
             print("Test PASS. The method fight_attack() has been implemented correctly.")
         else:
             print("Test FAIL. Check the method fight_attack().")
-    else:
+    else:  # FALSE
         if pokemon_6.get_health_points() == 99:
             print("Test PASS. The method fight_attack() has been implemented correctly.")
         else:
