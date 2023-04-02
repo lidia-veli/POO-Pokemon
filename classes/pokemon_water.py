@@ -33,9 +33,11 @@ this Python class.
 
 # Source packages.
 
+from pokemon import Pokemon
+from weapon_type import WeaponType
 
 
-class PokemonWater():
+class PokemonWater(Pokemon):
     """Python class to implement a basic version of a Pokemon of the game.
 
     This Python class implements the basic version of a Pokemon of the game.
@@ -69,6 +71,12 @@ class PokemonWater():
       >>> obj_Pokemon = PokemonWater(1, "Squirtle", WeaponType.PUNCH, 100, 7, 10)
     """
 
+    def __init__(self, pokemon_id, pokemon_name, weapon_type, health_points, attack_rating, defense_rating):
+        super().__init__(pokemon_id, pokemon_name, weapon_type, health_points, attack_rating, defense_rating)
+
+        # nuevas condiciones para el parámetro attack_rating: rango 11-20
+        if not attack_rating in range(11,21):
+            raise ValueError("The parameter attack_rating must be between 11 and 20.")
 
 def main():
     """Function main of the module.

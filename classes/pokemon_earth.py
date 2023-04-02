@@ -76,7 +76,7 @@ class PokemonEarth(Pokemon):
 
         # nuevas condiciones para el parámetro defense_rating: rango 11-20
         if not defense_rating in range(11,21):
-            raise ValueError("The defense rating must be between 11 and 20.")
+            raise ValueError("The parameter defense_rating must be between 11 and 20.")
 
 def main():
     """Function main of the module.
