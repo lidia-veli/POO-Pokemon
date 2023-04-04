@@ -36,6 +36,12 @@ import csv
 from classes.pokemon import Pokemon
 from classes.weapon_type import WeaponType
 
+dict_weapon_type = {'punch':WeaponType.PUNCH, 'PUNCH':WeaponType.PUNCH,
+                    'kick':WeaponType.KICK, 'KICK':WeaponType.KICK,
+                    'headbutt':WeaponType.HEADBUTT, 'HEADBUTT':WeaponType.HEADBUTT,
+                    'elbow':WeaponType.ELBOW, 'ELBOW':WeaponType.ELBOW
+                    }
+
 
 def get_data_from_user(name_file):
     """Function to obtain data from each user.
@@ -64,26 +70,36 @@ def get_data_from_user(name_file):
     if isinstance(name_file, str) is False:
         raise TypeError("The name of the file must be a string.")
 
-    else: 
+    else:
         # y nos aseguramos de que el fichero existe
         try:
-            pokemon_list = []
+            list_pokemon_att = []  # lista de listas de atributos que definen un pokemon
             with open(name_file, 'r', encoding="utf-8") as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=',')
                 for row in csv_reader:
-                    pokemon_list.append(row)
-        
+                    list_pokemon_att.append(row)
+       
         except FileNotFoundError:
             print("The file does not exist.")
 
-    return pokemon_list
 
+    # TRANSFORMAR CADA LISTA DE ATRIBUTOS POKEMON EN UN OBJETO TIPO POKEMON
+    list_pokemon_obj = []  # lista de objetos tipo Pokemon
+    for i in range(len(list_pokemon_att)):
+        pokemon = Pokemon( int(list_pokemon_att[i][0]), list_pokemon_att[i][1], dict_weapon_type[list_pokemon_att[i][2]], int(list_pokemon_att[i][3]), int(list_pokemon_att[i][4]), int(list_pokemon_att[i][5]) )
+        #                    identifyer                  name                    weapon_type                                health                       attack                       defense
 
-dict_weapon_type = {'punch':WeaponType.PUNCH, 'PUNCH':WeaponType.PUNCH,
-                    'kick':WeaponType.KICK, 'KICK':WeaponType.KICK,
-                    'headbutt':WeaponType.HEADBUTT, 'HEADBUTT':WeaponType.HEADBUTT,
-                    'elbow':WeaponType.ELBOW, 'ELBOW':WeaponType.ELBOW
-                    }
+        # nos aseguramos de que el parámetro list_of_pokemons debe ser una lista de elementos de tipo Pokemon
+        description = f"Pokemon ID {list_pokemon_att[i][0]} with name {list_pokemon_att[i][1]} has as weapon {list_pokemon_att[i][2].upper()} and health {list_pokemon_att[i][3]}"
+        if bool(str(pokemon) == description) == False:
+            raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
+        else:
+            # es verdaderamente un objeto tipo Pokemon del formato deseado
+            list_pokemon_obj.append(pokemon)
+
+    # DEVOLVEMOS LA LISTA DE OBJETOS POKEMON
+    return list_pokemon_obj
+
 
 
 def get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
@@ -112,33 +128,6 @@ def get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
        >>> get_pokemon_in_a_list_of_pokemons(1, list_of_pokemons)
     """
 
-    lista_tipo_pokemon = []  # lista donde vamos a guardar los elementos de tipo Pokemon
-    
-    # el parámetro coach_to_ask debe ser un integer
-    if isinstance(coach_to_ask, int) is False:
-        raise TypeError("The coach to ask must be an integer.")
-    
-    # TRANSFORMAR CADA LISTA DE ATRIBUTOS POKEMON EN UN OBJETO TIPO POKEMON
-    for i in range(len(list_of_pokemons)):
-        pokemon = Pokemon( int(list_of_pokemons[i][0]), list_of_pokemons[i][1], dict_weapon_type[list_of_pokemons[i][2]], int(list_of_pokemons[i][3]), int(list_of_pokemons[i][4]), int(list_of_pokemons[i][5]) )
-        #                    identifyer                  name                    weapon_type                                health                       attack                       defense
-
-        # nos aseguramos de que el parámetro list_of_pokemons debe ser una lista de elementos de tipo Pokemon
-        description = f"Pokemon ID {list_of_pokemons[i][0]} with name {list_of_pokemons[i][1]} has as weapon {list_of_pokemons[i][2].upper()} and health {list_of_pokemons[i][3]}"
-        if bool(str(pokemon) == description) == False:
-            raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
-        else:
-            # cambiamos la "lista de atributos que representan un pokemon" por un elemento de tipo Pokemon
-            lista_tipo_pokemon.append(pokemon)
-
-    # quitamos los pokemons sin vida de la lista
-    for poke in lista_tipo_pokemon:  # en la lista de elemtos de tipo Pokemon
-        if Pokemon.is_alive(poke) == False:  # si el pokemon está muerto
-            lista_tipo_pokemon.remove(poke)  # lo eliminamos de la lista
-        else:
-            pass
-
-    return lista_tipo_pokemon  # devolvemos una lista de elementos de tipo Pokemon, sin lo spokemons que se hayan quedado sin vida
 
 
 
