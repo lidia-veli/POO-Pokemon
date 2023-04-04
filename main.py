@@ -82,7 +82,6 @@ def get_data_from_user(name_file):
         except FileNotFoundError:
             print("The file does not exist.")
 
-
     # TRANSFORMAR CADA LISTA DE ATRIBUTOS POKEMON EN UN OBJETO TIPO POKEMON
     list_pokemon_obj = []  # lista de objetos tipo Pokemon
     for i in range(len(list_pokemon_att)):
@@ -102,32 +101,52 @@ def get_data_from_user(name_file):
 
 
 
-def get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
-    """Function to know the list of Pokemons that are associated to the Coach.
+def  get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
+   """Function to know the list of Pokemons that are associated to the Coach.
 
-    This function is used in order to know the list of Pokemos that are
-    associated to the coach. This function prints the result of this list, so
-    the user can select a Pokemon.
+   This function is used in order to know the list of Pokemos that are
+   associated to the coach. This function prints the result of this list, so
+   the user can select a Pokemon.
 
-    Syntax
-    ------
-       [ ] = get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
+   Syntax
+   ------
+      [ ] = get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
 
-    Parameters
-    ----------
-       [in] coach_to_ask Coach to ask for her/his list of Pokemons.
-       [in] list_of_pokemons List of the Pokemons that are associated to the
-                             coach.
+   Parameters
+   ----------
+      [in] coach_to_ask Coach to ask for her/his list of Pokemons.
+      [in] list_of_pokemons List of the Pokemons that are associated to the coach.
 
-    Returns
-    -------
-       List List of the Pokemons associaated to the coach that are undefeated.
+   Returns
+   -------
+      List List of the Pokemons associaated to the coach that are undefeated.
 
-    Example
-    -------
+   Example
+   -------
        >>> get_pokemon_in_a_list_of_pokemons(1, list_of_pokemons)
-    """
+   """
 
+   # nos aseguramos de que el parámetro coach_to_ask es un entero
+   if isinstance(coach_to_ask, int) is False:
+      raise TypeError("The parameter coach_to_ask must be an integer.")
+
+   # nos aseguramos de que el parámetro list_of_pokemons es una lista de elementos de tipo Pokemon
+   for i in range(len(list_of_pokemons)):
+      if isinstance(list_of_pokemons[i], Pokemon) is False:
+         raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
+
+   # eliminamos los pokemons sin vida
+   for poke in list_of_pokemons:
+      if poke.is_alive() == False:  # si el pokemon no tiene vida
+         list_of_pokemons.remove(poke)  # quitamos el pokemon de la lista
+   
+   # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
+   print(f"Coach {coach_to_ask} Pokemons:")
+   for poke in list_of_pokemons:
+      print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
+   
+
+   return list_of_pokemons
 
 
 
