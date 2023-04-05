@@ -33,7 +33,8 @@ This Python method contains the application of the Game.
 # Source packages.
 
 import csv
-from classes.pokemon import Pokemon
+import sys
+from classes.pokemon import (Pokemon, conj_active_ids)
 from classes.weapon_type import WeaponType
 
 dict_weapon_type = {'punch':WeaponType.PUNCH, 'PUNCH':WeaponType.PUNCH,
@@ -101,52 +102,78 @@ def get_data_from_user(name_file):
 
 
 
+
 def  get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
-   """Function to know the list of Pokemons that are associated to the Coach.
+    """Function to know the list of Pokemons that are associated to the Coach.
 
-   This function is used in order to know the list of Pokemos that are
-   associated to the coach. This function prints the result of this list, so
-   the user can select a Pokemon.
+    This function is used in order to know the list of Pokemos that are
+    associated to the coach. This function prints the result of this list, so
+    the user can select a Pokemon.
 
-   Syntax
-   ------
-      [ ] = get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
+    Syntax
+    ------
+        [ ] = get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
 
-   Parameters
-   ----------
-      [in] coach_to_ask Coach to ask for her/his list of Pokemons.
-      [in] list_of_pokemons List of the Pokemons that are associated to the coach.
+    Parameters
+    ----------
+        [in] coach_to_ask Coach to ask for her/his list of Pokemons.
+        [in] list_of_pokemons List of the Pokemons that are associated to the coach.
 
-   Returns
-   -------
-      List List of the Pokemons associaated to the coach that are undefeated.
+    Returns
+    -------
+        List List of the Pokemons associaated to the coach that are undefeated.
 
-   Example
-   -------
-       >>> get_pokemon_in_a_list_of_pokemons(1, list_of_pokemons)
-   """
+    Example
+    -------
+        >>> get_pokemon_in_a_list_of_pokemons(1, list_of_pokemons)
+    """
 
-   # nos aseguramos de que el parámetro coach_to_ask es un entero
-   if isinstance(coach_to_ask, int) is False:
-      raise TypeError("The parameter coach_to_ask must be an integer.")
+    # COMPROBAMOS QUE LOS PARÁMETROS SON CORRECTOS
+    # nos aseguramos de que el parámetro coach_to_ask es un entero
+    if isinstance(coach_to_ask, int) is False:
+        raise TypeError("The parameter coach_to_ask must be an integer.")
 
-   # nos aseguramos de que el parámetro list_of_pokemons es una lista de elementos de tipo Pokemon
-   for i in range(len(list_of_pokemons)):
-      if isinstance(list_of_pokemons[i], Pokemon) is False:
-         raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
+    # nos aseguramos de que el parámetro list_of_pokemons es una lista de elementos de tipo Pokemon
+    for i in range(len(list_of_pokemons)):
+        if isinstance(list_of_pokemons[i], Pokemon) is False:
+            raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
 
-   # eliminamos los pokemons sin vida
-   for poke in list_of_pokemons:
-      if poke.is_alive() == False:  # si el pokemon no tiene vida
-         list_of_pokemons.remove(poke)  # quitamos el pokemon de la lista
-   
-   # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
-   print(f"Coach {coach_to_ask} Pokemons:")
-   for poke in list_of_pokemons:
+
+   # QUITAMOS LOS POKEMONS QUE SE HAN QUEDADO SIN VIDA
+    for poke in list_of_pokemons:
+        if poke.is_alive() == False:  # si el pokemon no tiene vida
+            list_of_pokemons.remove(poke)  # quitamos el pokemon de la lista
+
+
+    # EL USUARIO ELIGE EL SIGUIENTE POKEMON QUE QUIERE USAR
+    # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
+    print(f"Coach {coach_to_ask} Pokemons:")
+    for poke in list_of_pokemons:
       print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
-   
 
-   return list_of_pokemons
+    # pedimos al usuario que elija un pokemon
+    entrada = input("Introduce the ID of the Pokemon you want to select: ")
+    try:  # nos aseguramos de que es un entero
+        poke_id = int(entrada)
+    except ValueError:
+        print("El ID del pokemon debe ser un entero.")
+        sys.exit()  # forzamos la salida del programa
+    # y comprobamos que el ID está en el conjunto de IDs activos
+    if poke_id not in conj_active_ids:
+        print("El ID no corresponde a ningún pokemon activo.")
+        sys.exit()  # forzamos la salida del programa
+    else:
+        pass
+
+    # recorremos la lista de pokemons hasta encontrar el pokemon con el ID introducido por el usuario
+    for poke in list_of_pokemons:
+        if poke.get_pokemon_id() == poke_id:
+            selected_pokemon = poke
+        else:
+            pass
+    
+    #print('Pokemon seleccionado', selected_pokemon.get_pokemon_name())
+    return selected_pokemon
 
 
 

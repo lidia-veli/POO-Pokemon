@@ -34,6 +34,9 @@ this Python class.
 # Source packages.
 
 from classes.weapon_type import WeaponType
+conj_active_ids = {''}  # conjunto vacío de ids activos
+    # lo hacemso conjunto porque simplemente lo vamos a usar para comprobar si un ID está activo o no,
+    # realmente no vamos a tener que acceder a los elementos del conjunto (en cuyo caso usaríamos una lista).
 
 class Pokemon():
     """Python class to implement a basic version of a Pokemon of the game.
@@ -69,14 +72,12 @@ class Pokemon():
       >>> obj_Pokemon = Pokemon(1, "Bulbasaur", WeaponType.PUNCH, 100, 7, 10)
     """
 
-    # atributos de clase
-    active_ids = []  # lista de ids activos
 
     #atributos de instancia, los ponemos todos privados
     def __init__(self, pokemon_id, pokemon_name, weapon_type, health_points, attack_rating, defense_rating):
         self.__pokemon_id = pokemon_id  # int
-            # al instanciar un objeto de la clase Pokemon, añadimos su id a la lista de ids activos
-        Pokemon.active_ids.append(pokemon_id)
+        conj_active_ids.add(int(pokemon_id))  # asegurándonos de que lo ahcemos en formato de numero entero
+            # al instanciar un objeto de la clase Pokemon, añadimos su id al conjunto de ids activos
         self.__pokemon_name = pokemon_name  # str
         self.__weapon_type = weapon_type  # WeaponType
         self.__health_points = health_points  # int in [1,100]
@@ -84,7 +85,7 @@ class Pokemon():
         self.__defense_rating = defense_rating  # int in [1,10]
 
         # verificamos que los parámetros de entrada son del tipo correcto y son válidos
-        if not isinstance(self.__pokemon_id, int) and self.__pokemon_id not in Pokemon.active_ids:
+        if not isinstance(self.__pokemon_id, int) and self.__pokemon_id not in conj_active_ids:
             # ID debe ser un entero y no haber sido usado previamente
             raise TypeError("The parameter pokemon_id must be a valid integer.")
         if not isinstance(self.__pokemon_name, str):
@@ -104,7 +105,7 @@ class Pokemon():
     
     #def __del__(self):
     #    print("Pokemon deleted")
-    #    Pokemon.active_ids.remove(self.__pokemon_id) # quitamos el id del pokemon eliminado de la lista de ids activos
+    #    Pokemon.conj_active_ids.remove(self.__pokemon_id) # quitamos el id del pokemon eliminado de la lista de ids activos
 
 
     # GETTERS y SETTERS
@@ -139,7 +140,8 @@ class Pokemon():
         '''Método para saber si el Pokemon está vivo o no'''
         if self.get_health_points() > 0:  # está vivo, si todavia tiene health_points
             return True
-        else:
+        else:  # si se ha quedado sin vida
+            conj_active_ids.remove(self.get_pokemon_id())  # quitamos su id del conjunto de ids activos
             return False
 
     def fight_defense(self, damage_points):
