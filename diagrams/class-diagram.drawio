@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="2">
     <diagram name="UML" id="6133507b-19e7-1e82-6fc7-422aa6c4b21f">
-        <mxGraphModel dx="576" dy="1274" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+        <mxGraphModel dx="542" dy="1274" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,7 +10,7 @@
                 <mxCell id="NAiFexQSWN1Ocbff_MQO-13" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
                     <mxGeometry y="26" width="400" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="NAiFexQSWN1Ocbff_MQO-14" value="+ main( ) : void&lt;br&gt;&lt;br&gt;+ get_data_from_user(name_file: str) : List list_pokemons&lt;br&gt;&lt;br&gt;+ get_pokemon_in_a_list_of_pokemons(coach_to_ask: int,&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;list_of_pokemons: List) : List list_pokemons_alive&lt;br&gt;&lt;br&gt;+ coach_is_undefeated(list_of_pokemons: List) : Boolean" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
+                <mxCell id="NAiFexQSWN1Ocbff_MQO-14" value="+ main( ) : void&lt;br&gt;&lt;br&gt;+ get_data_from_user(name_file: str) : List list_pokemons&lt;br&gt;&lt;br&gt;+ get_pokemon_in_a_list_of_pokemons(coach_to_ask: int,&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;list_of_pokemons: List) : List list_of_pokemons_alive&lt;br&gt;&lt;br&gt;+ coach_is_undefeated(list_of_pokemons: List) : bool" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="NAiFexQSWN1Ocbff_MQO-10" vertex="1">
                     <mxGeometry y="34" width="400" height="126" as="geometry"/>
                 </mxCell>
                 <mxCell id="NAiFexQSWN1Ocbff_MQO-18" value="Pokemon" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">

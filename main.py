@@ -145,35 +145,13 @@ def  get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
             list_of_pokemons.remove(poke)  # quitamos el pokemon de la lista
 
 
-    # EL USUARIO ELIGE EL SIGUIENTE POKEMON QUE QUIERE USAR
     # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
-    print(f"Coach {coach_to_ask} Pokemons:")
+    print(f"Coach {coach_to_ask} has {len(list_of_pokemons)} pokemons:")
     for poke in list_of_pokemons:
       print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
 
-    # pedimos al usuario que elija un pokemon
-    entrada = input("Introduce the ID of the Pokemon you want to select: ")
-    try:  # nos aseguramos de que es un entero
-        poke_id = int(entrada)
-    except ValueError:
-        print("El ID del pokemon debe ser un entero.")
-        sys.exit()  # forzamos la salida del programa
-    # y comprobamos que el ID está en el conjunto de IDs activos
-    if poke_id not in conj_active_ids:
-        print("El ID no corresponde a ningún pokemon activo.")
-        sys.exit()  # forzamos la salida del programa
-    else:
-        pass
-
-    # recorremos la lista de pokemons hasta encontrar el pokemon con el ID introducido por el usuario
-    for poke in list_of_pokemons:
-        if poke.get_pokemon_id() == poke_id:
-            selected_pokemon = poke
-        else:
-            pass
     
-    #print('Pokemon seleccionado', selected_pokemon.get_pokemon_name())
-    return selected_pokemon
+    return list_of_pokemons
 
 
 
@@ -201,6 +179,11 @@ def coach_is_undefeated(list_of_pokemons):
     -------
        >>> coach_is_undefeated(list_of_pokemons)
     """
+
+    if len(list_of_pokemons) == 0:
+        return True
+    else:
+        return False
 
 
 def main():
