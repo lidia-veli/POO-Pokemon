@@ -32,18 +32,32 @@ This Python method contains the application of the Game.
 
 # Source packages.
 
+
+# IMPORTACIONES
 import csv
 import sys
 from random import randint
 from classes.pokemon import (Pokemon, conj_active_ids)
 from classes.weapon_type import WeaponType
+from classes.pokemon_air import PokemonAir
+from classes.pokemon_earth import PokemonEarth
+from classes.pokemon_water import PokemonWater
+from classes.pokemon_electricity import PokemonElectricity
 
 dict_weapon_type = {'punch':WeaponType.PUNCH, 'PUNCH':WeaponType.PUNCH,
                     'kick':WeaponType.KICK, 'KICK':WeaponType.KICK,
                     'headbutt':WeaponType.HEADBUTT, 'HEADBUTT':WeaponType.HEADBUTT,
-                    'elbow':WeaponType.ELBOW, 'ELBOW':WeaponType.ELBOW
-                    }
+                    'elbow':WeaponType.ELBOW, 'ELBOW':WeaponType.ELBOW}
 
+
+dict_pokemon_types = {'Pidgey': PokemonAir,
+                    'Squirtle': PokemonWater, 
+                    'Charmeleon': Pokemon, 
+                    'Diglett': PokemonEarth, 'Venusaur': PokemonEarth,
+                    'Pikachu': PokemonElectricity}
+# consideramos que Charmeleon es un pokemon de tipo genérico porque no hemos definido el tipo fuego
+
+# FUNCIONES
 
 def get_data_from_user(name_file):
     """Function to obtain data from each user.
@@ -86,17 +100,24 @@ def get_data_from_user(name_file):
 
     # TRANSFORMAR CADA LISTA DE ATRIBUTOS POKEMON EN UN OBJETO TIPO POKEMON
     list_pokemon_obj = []  # lista de objetos tipo Pokemon
-    for i in range(len(list_pokemon_att)):
-        pokemon = Pokemon( int(list_pokemon_att[i][0]), list_pokemon_att[i][1], dict_weapon_type[list_pokemon_att[i][2]], int(list_pokemon_att[i][3]), int(list_pokemon_att[i][4]), int(list_pokemon_att[i][5]) )
-        #                    identifyer                  name                    weapon_type                                health                       attack                       defense
 
-        # nos aseguramos de que el parámetro list_of_pokemons debe ser una lista de elementos de tipo Pokemon
-        description = f"Pokemon ID {list_pokemon_att[i][0]} with name {list_pokemon_att[i][1]} has as weapon {list_pokemon_att[i][2].upper()} and health {list_pokemon_att[i][3]}"
-        if bool(str(pokemon) == description) == False:
+    for att_list in list_pokemon_att:
+        ident = int(att_list[0])
+        name = att_list[1]
+        weapon_type = dict_weapon_type[att_list[2]]
+        health = int(att_list[3])
+        attack = int(att_list[4])
+        defense = int(att_list[5])
+        pokemon = dict_pokemon_types[name](ident, name, weapon_type, health, attack, defense)
+
+        # nos aseguramos de que el parámetro list_of_pokemons va a ser una lista de elementos de tipo Pokemon
+        description = f"Pokemon ID {ident} with name {name} has as weapon {att_list[2].upper()} and health {health}"
+        if bool(str(pokemon) == description) == False:  # si imprimir el objeto no coincide con esta descripción, es que no es un objeto tipo Pokemon
             raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
         else:
             # es verdaderamente un objeto tipo Pokemon del formato deseado
             list_pokemon_obj.append(pokemon)
+            
 
     # DEVOLVEMOS LA LISTA DE OBJETOS POKEMON
     return list_pokemon_obj

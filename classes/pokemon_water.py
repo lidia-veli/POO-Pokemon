@@ -33,8 +33,8 @@ this Python class.
 
 # Source packages.
 
-from pokemon import Pokemon
-from weapon_type import WeaponType
+from classes.pokemon import Pokemon
+from classes.weapon_type import WeaponType
 
 
 class PokemonWater(Pokemon):

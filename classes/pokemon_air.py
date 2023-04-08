@@ -34,8 +34,8 @@ this Python class.
 # Source packages.
 
 from random import randint
-from pokemon import Pokemon
-from weapon_type import WeaponType
+from classes.pokemon import Pokemon
+from classes.weapon_type import WeaponType
 
 class PokemonAir(Pokemon):
     """Python class to implement a basic version of a Pokemon of the game.
