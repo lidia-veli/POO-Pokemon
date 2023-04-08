@@ -80,23 +80,32 @@ class Pokemon():
             # al instanciar un objeto de la clase Pokemon, añadimos su id al conjunto de ids activos
         self.__pokemon_name = pokemon_name  # str
         self.__weapon_type = weapon_type  # WeaponType
-        self.__health_points = health_points  # int in [1,100]
+        self.__health_points = health_points  # int in [0,100]
         self.__attack_rating = attack_rating  # int in [1,10]
         self.__defense_rating = defense_rating  # int in [1,10]
 
         # verificamos que los parámetros de entrada son del tipo correcto y son válidos
-        if not isinstance(self.__pokemon_id, int) and self.__pokemon_id not in conj_active_ids:
+        if not isinstance(self.__pokemon_id, int) or self.__pokemon_id not in conj_active_ids:
             # ID debe ser un entero y no haber sido usado previamente
             raise TypeError("The parameter pokemon_id must be a valid integer.")
         if not isinstance(self.__pokemon_name, str):
             raise TypeError("The parameter pokemon_name must be a string.")
         if not isinstance(self.__weapon_type, WeaponType):
             raise TypeError("The parameter weapon_type must be a WeaponType.")
-        if not isinstance(self.__health_points, int) and self.__health_points not in range(1, 101):
-            raise TypeError("The parameter health_points must be an integer between 1 and 100.")
-        if not isinstance(self.__attack_rating, int) and self.__attack_rating not in range(1, 11):
+        
+        # self.__health_points puede ser un entero entre 0 y 100
+        if not isinstance(self.__health_points, int):
+            raise TypeError("The parameter health_points must be an integer between 0 and 100.")
+        if self.__health_points not in range(0, 101):
+            if self.__health_points < 0:  # si es un número negativo, lo consideramos 0
+                self.__health_points = 0
+            else:
+                raise ValueError("The parameter health_points must be an integer between 0 and 100.")
+                
+
+        if not isinstance(self.__attack_rating, int) or self.__attack_rating not in range(1, 11):
             raise TypeError("The parameter attack_rating must be an integer between 1 and 10.")
-        if not isinstance(self.__defense_rating, int) and self.__defense_rating not in range(1, 11):
+        if not isinstance(self.__defense_rating, int) or self.__defense_rating not in range(1, 11):
             raise TypeError("The parameter defense_rating must be an integer between 1 and 10.")
 
     def __str__(self):
@@ -116,7 +125,10 @@ class Pokemon():
     def get_weapon_type(self):
         return self.__weapon_type
     def get_health_points(self):
-        return self.__health_points
+        if self.__health_points < 0:
+            return 0
+        else:
+            return self.__health_points
     def get_attack_rating(self):
         return self.__attack_rating
     def get_defense_rating(self):

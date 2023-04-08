@@ -268,6 +268,12 @@ def ronda_ataque(poke1, poke2, ataque_anterior):
 def batalla(poke1, poke2): 
     '''Funcion que modeliza una batalla entre dos pokemons.'''
     
+    #si tienen las mismas características de ataque y defensa automáticamente hay EMPATE
+    if poke1.get_attack_rating() == poke2.get_attack_rating() and poke1.get_defense_rating() == poke2.get_defense_rating():
+        print('Los dos pokemons tienen las mismas características de ataque y defensa.')
+        print('Empate')
+        return None
+
     ronda = 1  # contador de rondas
     print(f'Ronda {ronda}:')
     atacante = ronda_ataque_inicial(poke1, poke2)  # en la 1º ronda se alige aleatoriamente el atacante
@@ -276,7 +282,8 @@ def batalla(poke1, poke2):
         ronda += 1
         print(f'Ronda {ronda}:')
         atacante = ronda_ataque(poke1, poke2, atacante)  # depende de quien haya atacado antes
-    
+
+    # fuera del bucle, uno de los dos pokemons ha muerto
     if poke1.get_health_points() > 0:  # si al final poke1 está vivo
         print(f'El pokemon {poke1.get_pokemon_name()} ha ganado la batalla.')
         return poke1
@@ -313,16 +320,20 @@ def main():
       >>> main()
     """
 
+    puntos_vida_team_1 = []  # lista de puntos de vida del equipo 1
+    puntos_vida_team_2 = []  # lista de puntos de vida del equipo 2
+
     print("Welcome to the Game.")
     print("Let's start to set the configuration of each game user. \n")
 
     # Get configuration for Game User 1.
     pokemons_coach_1 = get_data_from_user('data/coach_1_pokemons.csv')
+    puntos_vida_team_1.append( sum([poke.get_health_points() for poke in pokemons_coach_1]) )  # puntos de vida iniciales del equipo 1
 
 
     # Get configuration for Game User 2.
     pokemons_coach_2 = get_data_from_user('data/coach_2_pokemons.csv')
-
+    puntos_vida_team_2.append( sum([poke.get_health_points() for poke in pokemons_coach_2]) )  # puntos de vida iniciales del equipo 2
 
     print("------------------------------------------------------------------")
     print("The Game starts...")
@@ -347,7 +358,13 @@ def main():
         print('------------------------------------------------------------------')
 
         ganador_batalla = batalla(poke_team_1, poke_team_2)  # batalla entre los dos pokemons elegidos
+
+        #actualizamos los puntos de vida de los equipos
+        puntos_vida_team_1.append( sum([poke.get_health_points() for poke in pokemons_coach_1]) )  # puntos de vida del equipo 1 tras la batalla
+        puntos_vida_team_2.append( sum([poke.get_health_points() for poke in pokemons_coach_2]) )  # puntos de vida del equipo 2 tras la batalla
         
+
+        # actualizamos las listas de pokemons de los entrenadores, según quien haya sido el ganador de la batalla
         if ganador_batalla == poke_team_1:  # si el ganador es el pokemon 1
             pokemons_coach_2 = get_pokemon_in_a_list_of_pokemons(2, pokemons_coach_2)  # actualizamos la lista de pokemons del entrenador 2
             if coach_is_defeated(pokemons_coach_1) or coach_is_defeated(pokemons_coach_2):
@@ -363,6 +380,14 @@ def main():
             else:
                 poke_team_1 = elegir_pokemon(1, pokemons_coach_1)  # el entrenador 1 elige otro pokemon
                 continue
+        
+        else: # ganador_batalla == None, EMPATE
+            # ninguno de los dos pokemons han sufrido daños
+            # cada entrenador elige un nuevo pokemon
+            poke_team_1 = elegir_pokemon(1, pokemons_coach_1)
+            poke_team_2 = elegir_pokemon(2, pokemons_coach_2)
+            continue
+            
 
     # fuera del bucle
     if not coach_is_defeated(pokemons_coach_1):  # si el entrenador 1 no ha sido derrotado
@@ -381,14 +406,28 @@ def main():
     print("The Game has ended")
     print("------------------------------------------------------------------")
 
-
     print("------------------------------------------------------------------")
     print("Statistics")
     print("------------------------------------------------------------------")
     print("Game User 1:")
+    for ronda in range(len(puntos_vida_team_1)):
+        if ronda == 0:
+            print(f'Initial health points: {puntos_vida_team_1[ronda]}')
+        elif ronda == len(puntos_vida_team_1)-1:
+            print(f'Final health points: {puntos_vida_team_1[ronda]}')
+        else:
+            print(f'Health points in Round {ronda}: {puntos_vida_team_1[ronda]}')
 
 
+    print('\n')
     print("Game User 2:")
+    for ronda in range(len(puntos_vida_team_2)):
+        if ronda == 0:
+            print(f'Initial health points: {puntos_vida_team_2[ronda]}')
+        elif ronda == len(puntos_vida_team_2)-1:
+            print(f'Final health points: {puntos_vida_team_2[ronda]}')
+        else:
+            print(f'Health points in Round {ronda}: {puntos_vida_team_2[ronda]}')
 
 
 
