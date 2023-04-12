@@ -37,25 +37,14 @@ This Python method contains the application of the Game.
 import csv
 import sys
 from random import randint
-from classes.pokemon import (Pokemon, conj_active_ids)
-from classes.weapon_type import WeaponType
-from classes.pokemon_air import PokemonAir
-from classes.pokemon_earth import PokemonEarth
-from classes.pokemon_water import PokemonWater
-from classes.pokemon_electricity import PokemonElectricity
+from pokemon import (Pokemon, conj_active_ids)
+from weapon_type import WeaponType
 
 dict_weapon_type = {'punch':WeaponType.PUNCH, 'PUNCH':WeaponType.PUNCH,
                     'kick':WeaponType.KICK, 'KICK':WeaponType.KICK,
                     'headbutt':WeaponType.HEADBUTT, 'HEADBUTT':WeaponType.HEADBUTT,
                     'elbow':WeaponType.ELBOW, 'ELBOW':WeaponType.ELBOW}
 
-
-dict_pokemon_types = {'Pidgey': PokemonAir,
-                    'Squirtle': PokemonWater, 
-                    'Charmeleon': Pokemon, 
-                    'Diglett': PokemonEarth, 'Venusaur': PokemonEarth,
-                    'Pikachu': PokemonElectricity}
-# consideramos que Charmeleon es un pokemon de tipo genérico porque no hemos definido el tipo fuego
 
 # FUNCIONES
 
@@ -81,7 +70,8 @@ def get_data_from_user(name_file):
     -------
       >>> list_pokemons = get_data_from_user("file.csv")
     """
-
+    
+    # COMPROBAMOS QUE LOS PARÁMETROS SON CORRECTOS
     # nos aseguramos de que el parametro name_file es un string
     if isinstance(name_file, str) is False:
         raise TypeError("The name of the file must be a string.")
@@ -98,25 +88,27 @@ def get_data_from_user(name_file):
         except FileNotFoundError:
             print("The file does not exist.")
 
+
     # TRANSFORMAR CADA LISTA DE ATRIBUTOS POKEMON EN UN OBJETO TIPO POKEMON
-    list_pokemon_obj = []  # lista de objetos tipo Pokemon
+    list_pokemon_obj = []  # lista donde vamos a ir guardando los objetos tipo Pokemon 
 
-    for att_list in list_pokemon_att:
-        ident = int(att_list[0])
-        name = att_list[1]
-        weapon_type = dict_weapon_type[att_list[2]]
-        health = int(att_list[3])
-        attack = int(att_list[4])
-        defense = int(att_list[5])
-        pokemon = dict_pokemon_types[name](ident, name, weapon_type, health, attack, defense)
+    for att_list in list_pokemon_att:  # para cada lista de atributos de un pokemon
+        ident = int(att_list[0])  # int
+        name = att_list[1]  # str
+        weapon_type = dict_weapon_type[att_list[2]]  # WeaponType
+        health = int(att_list[3])  # int
+        attack = int(att_list[4])  # int
+        defense = int(att_list[5])  # int
+        # creamos el objeto tipo Pokemon
+        pokemon = Pokemon(ident, name, weapon_type, health, attack, defense)
 
-        # nos aseguramos de que el parámetro list_of_pokemons va a ser una lista de elementos de tipo Pokemon
+        # nos aseguramos de que realmente es un elemento de tipo Pokemon
         description = f"Pokemon ID {ident} with name {name} has as weapon {att_list[2].upper()} and health {health}"
-        if bool(str(pokemon) == description) == False:  # si imprimir el objeto no coincide con esta descripción, es que no es un objeto tipo Pokemon
+        if bool(str(pokemon) == description) is False:  # si imprimir el objeto no coincide con esta descripción, es que no es un objeto tipo Pokemon
             raise TypeError("The parameter list_of_pokemons must be a list of Pokemon-type elements.")
         else:
             # es verdaderamente un objeto tipo Pokemon del formato deseado
-            list_pokemon_obj.append(pokemon)
+            list_pokemon_obj.append(pokemon)  # añadimos el objeto a ls lista de objetos Pokemon
             
 
     # DEVOLVEMOS LA LISTA DE OBJETOS POKEMON
@@ -171,7 +163,8 @@ def  get_pokemon_in_a_list_of_pokemons(coach_to_ask, list_of_pokemons):
     #for poke in list_of_pokemons:
     #  print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
 
-    
+
+    # DEVOLVEMOS LA LISTA DE POKEMONS ACTUALIZADA
     return list_of_pokemons
 
 
@@ -207,7 +200,7 @@ def coach_is_defeated(list_of_pokemons):
 
 
 #--------------------------------------------------------------------------------
-# FUNCIONES EXTERNALIZADAS main()
+# FUNCIONES EXTERNALIZADAS de la función main()
 #--------------------------------------------------------------------------------
 
 def  elegir_pokemon(coach_to_ask, list_of_pokemons):
@@ -218,7 +211,7 @@ def  elegir_pokemon(coach_to_ask, list_of_pokemons):
     # nos aseguramos de que el parámetro coach_to_ask es un entero
     if isinstance(coach_to_ask, int) is False:
         raise TypeError("The parameter coach_to_ask must be an integer.")
-
+    
     # nos aseguramos de que el parámetro list_of_pokemons es una lista de elementos de tipo Pokemon
     for i in range(len(list_of_pokemons)):
         if isinstance(list_of_pokemons[i], Pokemon) is False:
@@ -226,49 +219,53 @@ def  elegir_pokemon(coach_to_ask, list_of_pokemons):
 
 
     # EL USUARIO ELIGE EL SIGUIENTE POKEMON QUE QUIERE USAR
-    
-    # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
-    print('\n')
-    print(f"Coach {coach_to_ask} has {len(list_of_pokemons)} pokemons:")
-    for poke in list_of_pokemons:
-      print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
+    # bucle para repetir la elección del pokemon hasta que se elija uno válido
+    while True:
 
-    # pedimos al usuario que elija un pokemon
-    entrada = input("Introduce the ID of the Pokemon you want to select: ")
-    try:  # nos aseguramos de que es un entero
-        poke_id = int(entrada)
-    except ValueError:
-        print("El ID del pokemon debe ser un entero.")
-        sys.exit()  # forzamos la salida del programa
-    # y comprobamos que el ID está en el conjunto de IDs activos
-    if poke_id not in conj_active_ids:
-        print("El ID no corresponde a ningún pokemon activo.")
-        sys.exit()  # forzamos la salida del programa
-    else:
-        pass
+        # imprimir por pantalla la lista de pokemons para que el usuario pueda elegir
+        print()
+        print(f"Coach {coach_to_ask} has {len(list_of_pokemons)} pokemons:")
+        for poke in list_of_pokemons:
+            print(f'Pokemon: {poke.get_pokemon_id()}. Name: {poke.get_pokemon_name()}. Weapon: {poke.get_weapon_type().name}. Health: {poke.get_health_points()}. Attack: {poke.get_attack_rating()}. Defense: {poke.get_defense_rating()}.')
 
-    # recorremos la lista de pokemons hasta encontrar el pokemon con el ID introducido por el usuario
-    for poke in list_of_pokemons:
-        if poke.get_pokemon_id() == poke_id:
-            selected_pokemon = poke
+        # pedimos al usuario que elija un pokemon
+        entrada = input("Introduce the ID of the Pokemon you want to select: ")
+        try:  # nos aseguramos de que es un entero
+            poke_id = int(entrada)
+        except:
+            print()
+            print("Pokemon ID must be an integer.")
+            continue  # volvemos a pedir que elija un pokemon
+
+        # y comprobamos que el ID está en el conjunto de IDs activos
+        if poke_id not in conj_active_ids:
+            print()
+            print("This ID doesn't belong to any active pokemon. Choose another one.")
+            continue  # volvemos a pedir que elija un pokemon
         else:
             pass
-    
-    print('Pokemon seleccionado', selected_pokemon.get_pokemon_name())
-    return selected_pokemon
+        
+        # recorremos la lista de pokemons hasta encontrar el pokemon con el ID introducido por el usuario
+        for poke in list_of_pokemons:
+            if poke.get_pokemon_id() == poke_id:
+                selected_pokemon = poke
+                print(f'Selected pokemon: {selected_pokemon.get_pokemon_name()}.')
+                return selected_pokemon
+            else:
+                pass  
 
 
 def ronda_ataque_inicial(poke1, poke2):
     '''Función que modeliza la 1º ronda de ataque de un combate entre dos pokemons.
     RETURN: atacante en esa ronda (1 o 2).'''
     # elegimos aleatoriamente quien ataca primero
-    if randint(0, 1) == 0:  
+    if randint(0, 1) == 0:
         #poke1.fight_attack(poke2)  # ataca primero poke1
-        print(f'El pokemon {poke1.get_pokemon_name()} ataca primero.')
+        print(f'Pokemon {poke1.get_pokemon_name()} attacked first.')
         return 1
     else:
         #poke2.fight_attack(poke1)  # ataca primero poke2
-        print(f'El pokemon {poke2.get_pokemon_name()} ataca primero.')
+        print(f'Pokemon {poke2.get_pokemon_name()} attacked first.')
         return 2
 
 
@@ -277,42 +274,42 @@ def ronda_ataque(poke1, poke2, ataque_anterior):
     RETURN: atacante en esa ronda (1 o 2).'''
     if ataque_anterior == 1:  # ha atacado antes el pokemon 1
         poke2.fight_attack(poke1)  # ahora ataca el pokemon 2
-        print(f'El pokemon {poke2.get_pokemon_name()} ataca ahora.')
+        print(f'Pokemon {poke2.get_pokemon_name()} attacked.')
         return 2
     
     else:  # ha atacado antes el pokemon 2
         poke1.fight_attack(poke2)  # ahora ataca el pokemon 1
-        print(f'El pokemon {poke1.get_pokemon_name()} ataca ahora.')
+        print(f'Pokemon {poke1.get_pokemon_name()} attacked.')
         return 1
 
 
-def batalla(poke1, poke2): 
+def batalla(poke1, poke2):
     '''Funcion que modeliza una batalla entre dos pokemons.'''
     
     #si tienen las mismas características de ataque y defensa automáticamente hay EMPATE
     if poke1.get_attack_rating() == poke2.get_attack_rating() and poke1.get_defense_rating() == poke2.get_defense_rating():
-        print('Los dos pokemons tienen las mismas características de ataque y defensa.')
-        print('Empate')
+        print('Both pokemons have the same attack and defense ratings.')
+        print("It's a tie.")
         return None
 
     ronda = 1  # contador de rondas
-    print(f'Ronda {ronda}:')
+    print(f'Round {ronda}:')
     atacante = ronda_ataque_inicial(poke1, poke2)  # en la 1º ronda se alige aleatoriamente el atacante
 
     while poke1.is_alive() and poke2.is_alive():  # mientras ambos pokemons estén vivos
         ronda += 1
-        print(f'Ronda {ronda}:')
+        print(f'Round {ronda}:')
         atacante = ronda_ataque(poke1, poke2, atacante)  # depende de quien haya atacado antes
 
     # fuera del bucle, uno de los dos pokemons ha muerto
     if poke1.get_health_points() > 0:  # si al final poke1 está vivo
-        print(f'El pokemon {poke1.get_pokemon_name()} ha ganado la batalla.')
+        print(f'Pokemon {poke1.get_pokemon_name()} won the battle.')
         return poke1
     
     # hemos salido del bucle, por lo que uno de los dos pokemons ha muerto
     # si poke1 no está vivo, entonces poke2 está vivo
     else:
-        print(f'El pokemon {poke2.get_pokemon_name()} ha ganado la batalla.')
+        print(f'Pokemon {poke2.get_pokemon_name()} won the battle.')
         return poke2
 
 
@@ -375,7 +372,7 @@ def main():
     # mientras los entrenadores tengan pokemons vivos
     while True:
         print('------------------------------------------------------------------')
-        print(f'BATALLA entre E1: {poke_team_1.get_pokemon_name()} y E2: {poke_team_2.get_pokemon_name()}')
+        print(f"BATTLE between Team 1's: {poke_team_1.get_pokemon_name()} and Team 2's: {poke_team_2.get_pokemon_name()}")
         print('------------------------------------------------------------------')
 
         ganador_batalla = batalla(poke_team_1, poke_team_2)  # batalla entre los dos pokemons elegidos
@@ -413,12 +410,12 @@ def main():
     # fuera del bucle
     if not coach_is_defeated(pokemons_coach_1):  # si el entrenador 1 no ha sido derrotado
         print("------------------------------------------------------------------")
-        print("The Game User 1 has won the Game.")
+        print("Game User 1 has won the Game.")
         print("------------------------------------------------------------------")
     
     else:  # si el entrenador 2 no ha sido derrotado
         print("------------------------------------------------------------------")
-        print("The Game User 2 has won the Game.")
+        print("Game User 2 has won the Game.")
         print("------------------------------------------------------------------")
 
 
